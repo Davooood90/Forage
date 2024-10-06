@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/style.css"> <!-- Link to the custom CSS file -->
+
+    <title>Forage</title>
+</head>
+<body>
+    <section class="masthead">
+        <div>
+            <img src="../static/img/Forage Logo with Text.png" alt="Primary Logo" class="primary-logo" id="primaryLogo">
+            <h2>Presented by Alt-F4</h2>
+        </div>
+    </section>
+
+    <section class="htu">
+
+    </section>
+    
+    <section class="filter">
+        <div class="container">
+            <h1>Getting Started</h1>
+            <p>Filter out your allergies as well as any dietary restrictions...</p> 
+            <hr style="margin: 30px;">
+            <div class="dietary-restrictions">    
+                <form action="/recommendations" method="post">
+                    <!-- Allergens Section -->
+                    <div class="section">
+                        <h3>Allergens</h3>
+                        <div class="allergen-grid">
+                            <input type="checkbox" id="egg" name="allergen" value="Egg">
+                            <label for="egg">Egg</label>
+    
+                            <input type="checkbox" id="milk" name="allergen" value="Milk">
+                            <label for="milk">Milk</label>
+    
+                            <input type="checkbox" id="soy" name="allergen" value="Soy">
+                            <label for="soy">Soy</label>
+    
+                            <input type="checkbox" id="sulphites" name="allergen" value="Sulphites">
+                            <label for="sulphites">Sulphites</label>
+    
+                            <input type="checkbox" id="sesame" name="allergen" value="Sesame">
+                            <label for="sesame">Sesame</label>
+    
+                            <input type="checkbox" id="mustard" name="allergen" value="Mustard">
+                            <label for="mustard">Mustard</label>
+    
+                            <input type="checkbox" id="gluten" name="allergen" value="Gluten">
+                            <label for="gluten">Gluten</label>
+    
+                            <input type="checkbox" id="wheat" name="allergen" value="Wheat">
+                            <label for="wheat">Wheat</label>
+    
+                            <input type="checkbox" id="treenuts" name="allergen" value="Treenuts">
+                            <label for="treenuts">Treenuts</label>
+    
+                            <input type="checkbox" id="fish" name="allergen" value="Fish">
+                            <label for="fish">Fish</label>
+    
+                            <input type="checkbox" id="shellfish" name="allergen" value="Shellfish">
+                            <label for="shellfish">Shellfish</label>
+    
+                            <input type="checkbox" id="crustacean" name="allergen" value="Crustacean">
+                            <label for="crustacean">Crustacean</label>
+    
+                            <input type="checkbox" id="peanuts" name="allergen" value="Peanuts">
+                            <label for="peanuts">Peanuts</label>
+    
+                            <input type="checkbox" id="treenutsCashews" name="allergen" value="TreenutsCashews">
+                            <label for="treenutsCashews">Treenuts (Cashews)</label>
+    
+                            <input type="checkbox" id="treenutsAlmonds" name="allergen" value="TreenutsAlmonds">
+                            <label for="treenutsAlmonds">Treenuts (Almonds)</label>
+    
+                            <input type="checkbox" id="treenutsPistachios" name="allergen" value="TreenutsPistachios">
+                            <label for="treenutsPistachios">Treenuts (Pistachios)</label>
+    
+                            <input type="checkbox" id="fishSalmon" name="allergen" value="FishSalmon">
+                            <label for="fishSalmon">Fish (Salmon)</label>
+    
+                            <input type="checkbox" id="fishCod" name="allergen" value="FishCod">
+                            <label for="fishCod">Fish (Cod)</label>
+    
+                            <input type="checkbox" id="fishTuna" name="allergen" value="FishTuna">
+                            <label for="fishTuna">Fish (Tuna)</label>
+    
+                            <input type="checkbox" id="fishHalibut" name="allergen" value="FishHalibut">
+                            <label for="fishHalibut">Fish (Halibut)</label>
+                        </div>
+                    </div>
+            
+                    <!-- Special Diets Section -->
+                    <div class="section">
+                        <h3>Dietary Restrictions</h3>
+                        <div class="diet-grid">
+                            <input type="checkbox" id="halal" name="diet" value="Halal">
+                            <label for="halal">Halal</label>
+
+                            <input type="checkbox" id="vegetarian" name="diet" value="Vegetarian">
+                            <label for="vegetarian">Vegetarian</label>
+
+                            <input type="checkbox" id="vegan" name="diet" value="Vegan">
+                            <label for="vegan">Vegan</label>
+
+                            <input type="checkbox" id="glutenFree" name="diet" value="GlutenFree">
+                            <label for="glutenFree">Made Without Gluten</label>
+
+                            <input type="checkbox" id="oceanWise" name="diet" value="OceanWise">
+                            <label for="oceanWise">OceanWise</label>
+
+                            <input type="checkbox" id="lowGHG" name="diet" value="LowGHG">
+                            <label for="lowGHG">Low GHG Emissions</label>
+
+                            <input type="checkbox" id="mediumGHG" name="diet" value="MediumGHG">
+                            <label for="mediumGHG">Medium GHG Emissions</label>
+
+                            <input type="checkbox" id="highGHG" name="diet" value="HighGHG">
+                            <label for="highGHG">High GHG Emissions</label>
+                        </div>
+                    </div>
+            
+                    <button type="submit">Submit</button>
+                </form>
+                <hr style="margin: 30px;">
+                {% if options %}
+                <h3 style="text-align: center;">Choices Available</h3>
+                {% for option in options %}
+                    {% if loop.index % 2 == 0 %}
+                    <div class="location">
+                        <!-- Map Section (40%) -->
+                        <iframe class="map" style="width: 60%;" src="{{ option.link }}" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    
+                        <!-- Info Section (60%) -->
+                        <div class="info">
+                            <h2>{{ option.name }}</h2>
+                            <p ><strong>Open Hours:</strong> {{ option.hours }}</p>
+                            <hr style="margin: 30px;">
+    
+                    
+                            <h3>Available Foods:</h3>
+                            <ul>
+                                {% for key, food in short.items() %}
+                                    {% if key == option.id %}
+                                        {% for dish in food %}
+                                            {% for dname in dish %}
+                                                <li>{{ dname }}</li>
+                                            {% endfor %}
+                                        {% endfor %}
+                                    {% endif %}
+                                {% endfor %}
+
+
+                            </ul>
+                    
+                            <button style="margin-top: auto;" class="view-more" onclick="openModal('{{ option.id }}')">View More</button>
+                        </div>
+                    </div>
+                    {% else %}
+                    <div class="location">
+                        <!-- Map Section (40%) -->
+                    
+                        <!-- Info Section (60%) -->
+                        <div class="info">
+                            <h2>{{ option.name }}</h2>
+                            <p><strong>Open Hours:</strong> {{ option.hours }}</p>
+                            <hr style="margin: 30px;">
+    
+                    
+                            <h3>Available Foods:</h3>
+                            <ul>
+                                {% for key, food in short.items() %}
+                                    {% if key == option.id %}
+                                        {% for dish in food %}
+                                            {% for dname in dish %}
+                                                <li>{{ dname }}</li>
+                                            {% endfor %}
+                                        {% endfor %}
+                                    {% endif %}
+                                {% endfor %}
+
+                            </ul>
+                    
+                            <button style="margin-top: auto;" class="view-more" onclick="openModal('{{ option.id }}')">View More</button>
+                        </div>
+                        <iframe class="map" style="width: 60%;" src="{{ option.link }}" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+                    </div>
+                    {% endif %}
+                
+                {% endfor %}
+                <hr style="margin: 30px;">
+
+                {% endif %}
+                </div>
+                
+            </div>
+    </section>
+    
+    <section class="about">
+        <div class="container">
+            <h1>About Forage</h1>
+            <p>Filter out your allergens as well as any dietary restrictions...</p> 
+        </div>
+    </section>
+
+    {% for option in options %}
+    <div id="{{ option.id }}" class="modal">
+        <div class="modal-content">
+            <h3>Available Foods @ {{ option.name }}:</h3>
+                <ul>
+                    {% for key, food in foods.items() %}
+                        {% if key == option.id %}
+                            {% for dish in food %}
+                                {% for dname in dish %}
+                                    <li>{{ dname }}</li>
+                                {% endfor %}
+                            {% endfor %}
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            <button class="close-modal" onclick="closeModal('{{ option.id }}')">Close</button>
+        </div>
+    </div>
+    {% endfor %}
+    
+
+    <footer class="footer py-4">
+        <div class="container">
+            <div>Copyright &copy; Forage 2024</div>
+        </div>
+    </footer>
+    
+    <section>
+        
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+    
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="../static/js/script.js"></script>
+</body>
+</html>
