@@ -72,6 +72,10 @@ input[type="checkbox"] {
     margin-right: 10px;
 }
 
+img {
+    max-width: 60vw;
+}
+
 /* Button styling */
 button[type="submit"] {
     display: block;
@@ -265,6 +269,7 @@ ul {
     background-color: #f0f0f0; /* Light background for list items */
     padding: 10px; /* Padding for list items */
     border-radius: 4px; /* Rounded corners for list items */
+    cursor: pointer;
 }
 
 .close-modal {
@@ -281,3 +286,54 @@ ul {
     background-color: #45a049; /* Darker green on hover */
 }
 
+.about {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+}
+
+.about h1 {
+    font-size: 2em;
+    margin-bottom: 10px;
+    color: #333;
+}
+p {
+    font-size: 1.2em;
+    color: #666;
+    line-height: 1.6em;
+    max-width: 900px;
+    margin: 0 auto 30px;
+}
+
+.dietary-restrictions .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    overflow-x: auto;
+}
+
+.row {
+    display: flex;
+    align-items: center; /* Align logo and text vertically */
+    gap: 20px; /* Adds spacing between the logo and text */
+    padding: 20px 0;
+}
+
+.row img {
+    max-width: 100px; /* Restrict image size */
+    height: auto;
+}
+
+.row p {
+    flex: 1; /* Allow the paragraph to take remaining space */
+    font-size: 1.1em;
+}
+
+@media (max-width: 768px) {
+    .row {
+        flex-direction: column; /* Stack logo and text vertically on smaller screens */
+        text-align: center;
+    }
+
+    .row img {
+        margin-bottom: 20px;
+    }
+}

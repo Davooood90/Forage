@@ -15,22 +15,20 @@
             <h2>Presented by Alt-F4</h2>
         </div>
     </section>
-
-    <section class="htu">
-
-    </section>
     
     <section class="filter">
         <div class="container">
             <h1>Getting Started</h1>
-            <p>Filter out your allergies as well as any dietary restrictions...</p> 
+            <p>Welcome to Forage by Team Alt + F4, the newest solution to your nutrition needs!  Whether you’re a first year living on residence or just stopping by, Forage has a solution tailored to your personal preferences. So what are you waiting for? Let’s dive right in!</p>
+
+            <p>Filter out your allergies as well as any dietary restrictions:</p> 
             <hr style="margin: 30px;">
             <div class="dietary-restrictions">    
                 <form action="/recommendations" method="post">
                     <!-- Allergens Section -->
                     <div class="section">
                         <h3>Allergens</h3>
-                        <div class="allergen-grid">
+                        <div class="allergen-grid container">
                             <input type="checkbox" id="egg" name="allergen" value="Egg">
                             <label for="egg">Egg</label>
     
@@ -95,8 +93,8 @@
             
                     <!-- Special Diets Section -->
                     <div class="section">
-                        <h3>Dietary Restrictions</h3>
-                        <div class="diet-grid">
+                        <h3 style="margin-top: 30px;">Dietary Restrictions</h3>
+                        <div class="diet-grid container">
                             <input type="checkbox" id="halal" name="diet" value="Halal">
                             <label for="halal">Halal</label>
 
@@ -123,7 +121,7 @@
                         </div>
                     </div>
             
-                    <button type="submit">Submit</button>
+                    <button style="margin: 30px auto;" type="submit">Submit</button>
                 </form>
                 <hr style="margin: 30px;">
                 {% if options %}
@@ -203,7 +201,8 @@
     <section class="about">
         <div class="container">
             <h1>About Forage</h1>
-            <p>Filter out your allergens as well as any dietary restrictions...</p> 
+            <p>Helping people catch a perfect meal since 2024.</p>
+            <p>Forage is a web app designed to make the dining experience for students at UBC easier by addressing the challenges posed by dietary restrictions, allergies, and time constraints. We believe that everyone should have easy access to delicious meals without the stress of searching through multiple options. By leveraging the Nutrislice API for real-time dining data and Google Maps for location services, Forage helps users quickly find and filter food choices that meet their specific needs. Our mission is to allow students to make informed, healthy decisions with ease, improving their overall well-being on campus.</p>
         </div>
     </section>
 
@@ -216,7 +215,7 @@
                         {% if key == option.id %}
                             {% for dish in food %}
                                 {% for dname in dish %}
-                                    <li>{{ dname }}</li>
+                                    <li onclick="findInfo('{{ dname }}')">{{ dname }}</li>
                                 {% endfor %}
                             {% endfor %}
                         {% endif %}
@@ -240,35 +239,12 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-
-    
-
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="../static/js/script.js"></script>
+    <script src="../static/js/bot.js"></script>
+
 </body>
 </html>
